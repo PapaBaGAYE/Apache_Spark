@@ -51,9 +51,8 @@ sudo docker compose up
 ```
 sudo docker exec -it docker-spark_master_1 /bin/bash
 ```
-<hr>
 
-**Utiliser scala**
+### Utiliser scala
 
 ```
 spark-shell
@@ -92,4 +91,22 @@ tr.flatMap( _.split(" ") ).map(_.replaceAll("[,.]", "")).filter(mot => mot.conta
 
 ```
 tr.flatMap( _.split(" ") ).map(_.replaceAll("[,.]", "")).filter(mot => mot.contains("table" )).map(mot => (mot, 1)).reduceByKey(_ + _).take(10)
+```
+
+### Utiliser Python
+
+```
+./pyspark
+```
+
+```
+val tr = sc.textFile("/tmp/data/table_ronde/*.txt"
+```
+
+```
+tr.flatMap( lambda l : l.split(" ") ).filter(lambda mot : "table" in mot).take(10)
+```
+
+```
+tr.flatMap( lambda l : l.split(" ") ).filter(lambda mot : "table" in mot).saveAsTextFile("/tmp/data/tables")
 ```
