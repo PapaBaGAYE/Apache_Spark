@@ -73,3 +73,7 @@ val tr = sc.textFile("/tmp/data/table_ronde/*.txt")
 ```
 tr.map( l => l.length  )
 ```
+
+```
+ln.reduce( (a, b) => a + b  )
+```
