@@ -77,3 +77,19 @@ tr.map( l => l.length  )
 ```
 ln.reduce( (a, b) => a + b  )
 ```
+
+```
+tr.flatMap( _.split(" ") ).take(10)
+```
+
+```
+tr.flatMap( _.split(" ") ).filter(mot => mot.contains("table" )).take(10)
+```
+
+```
+tr.flatMap( _.split(" ") ).map(_.replaceAll("[,.]", "")).filter(mot => mot.contains("table" )).take(10)
+```
+
+```
+tr.flatMap( _.split(" ") ).map(_.replaceAll("[,.]", "")).filter(mot => mot.contains("table" )).map(mot => (mot, 1)).reduceByKey(_ + _).take(10)
+```
