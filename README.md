@@ -1,5 +1,7 @@
 # Apache_Spark
 
+## INSTALLATION
+
 ```
 sudo apt update
 ```
@@ -32,10 +34,11 @@ sudo apt-get install docker-ce
 docker --version
 ```
 
-<hr>```
+## LANCEMENT
 
 ```
 service docker start
+```
 
 ```
 service docker status
