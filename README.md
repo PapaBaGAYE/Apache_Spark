@@ -69,3 +69,7 @@ spark-shell
 ```
 val tr = sc.textFile("/tmp/data/table_ronde/*.txt")
 ```
+
+```
+tr.map( l => l.length  )
+```
