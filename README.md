@@ -45,7 +45,7 @@ service docker status
 ```
 
 ```
-sudo docker compose up
+sudo docker-compose up
 ```
 
 ```
@@ -109,4 +109,34 @@ tr.flatMap( lambda l : l.split(" ") ).filter(lambda mot : "table" in mot).take(1
 
 ```
 tr.flatMap( lambda l : l.split(" ") ).filter(lambda mot : "table" in mot).saveAsTextFile("/tmp/data/tables")
+```
+
+### Creer un Dataframe
+
+```
+cepages = [
+  ("Aglianico", "R", "IT"),
+  ("Aligoté", "B", "FR"),
+  ("Amigne", "B", "CH"),
+  ("Arbois", "B", "FR"),
+  ("Arinarnoa", "R", "FR"),
+  ("Arinto", "B", "PT"),
+  ("Arriloba", "B", "FR"),
+  ("Gewurztraminer", "B", "CH"),
+  ("Grechetto", "B", "IT"),
+  ("Grignolino", "R", "IT"),
+  ("Grüner Veltiner", "B", "AT")
+]
+```
+
+```
+df = spark.createDataFrame(cepages, ["Nom", "Couleur", "Pays"])
+```
+
+```
+df.Nom
+```
+
+```
+df.columns
 ```
