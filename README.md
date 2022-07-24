@@ -55,7 +55,7 @@ sudo docker exec -it docker-spark_master_1 /bin/bash
 ### Utiliser scala
 
 ```
-spark-shell
+./spark-shell
 ```
 
 <p>En scala on peut utiliser : </p>
@@ -139,4 +139,8 @@ df.Nom
 
 ```
 df.columns
+```
+
+```
+df.take(5)
 ```
