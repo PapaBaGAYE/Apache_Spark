@@ -144,3 +144,23 @@ df.columns
 ```
 df.take(5)
 ```
+
+```
+df.filter(df.Couleur == 'R').show()
+```
+
+### Ajouter le package spark-avro
+
+```
+./bin/spark-shell --packages com.databricks:spark-avro_2.11:4.0.0
+```
+
+```
+import com.databricks.spark.avro._
+```
+
+**Lecture du fichier avro**
+
+```
+val co = spark.read.avro("/tmp/data/communes.avro")
+```
