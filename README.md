@@ -156,6 +156,10 @@ df.filter(df.Couleur == 'R').show()
 ```
 
 ```
+./bin/spark-shell --master yarn --conf spark.ui.port=0 --packages org.apache.spark:spark-avro_2.11:2.4.0
+```
+
+```
 import com.databricks.spark.avro._
 ```
 
@@ -163,4 +167,31 @@ import com.databricks.spark.avro._
 
 ```
 val co = spark.read.avro("/tmp/data/communes.avro")
+```
+
+### Lecture du fichier csv
+```
+val df = spark.read.option("header",true).csv("/tmp/data/infos.csv")
+```
+
+```
+co.show()
+```
+
+### Jointure des 2 Dataframes
+```
+co.join(co2, co("ID") === co2("ID")).show()
+```
+
+```
+co.filter("Nom == GAYE").join(co2, co("ID") === co2("ID")).show()
+```
+
+### Ecriture et lectures de fichier parquet
+```c
+o.write.parquet("/tmp/data/infos.parquet")
+```
+
+```
+val df = spark.read.parquet("/tmp/data/infos.parquet")
 ```
