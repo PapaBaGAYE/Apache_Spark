@@ -65,18 +65,22 @@ sudo docker exec -it docker-spark_master_1 /bin/bash
     <li>val : pour definir une constance</li>
 </ul>
 
+**Lecture des fichiers .txt**
 ```
 val tr = sc.textFile("/tmp/data/table_ronde/*.txt")
 ```
 
+**Map avec une fonction lambda**
 ```
 tr.map( l => l.length  )
 ```
 
+**Reduce fonction**
 ```
 ln.reduce( (a, b) => a + b  )
 ```
 
+**Split fonction**
 ```
 tr.flatMap( _.split(" ") ).take(10)
 ```
@@ -85,6 +89,7 @@ tr.flatMap( _.split(" ") ).take(10)
 tr.flatMap( _.split(" ") ).filter(mot => mot.contains("table" )).take(10)
 ```
 
+**Split & Filter ... fonction**
 ```
 tr.flatMap( _.split(" ") ).map(_.replaceAll("[,.]", "")).filter(mot => mot.contains("table" )).take(10)
 ```
@@ -95,14 +100,17 @@ tr.flatMap( _.split(" ") ).map(_.replaceAll("[,.]", "")).filter(mot => mot.conta
 
 ### Utiliser Python
 
+**Lancer pyspark**
 ```
 ./pyspark
 ```
 
+**Lecture des fichiers .txt**
 ```
 val tr = sc.textFile("/tmp/data/table_ronde/*.txt"
 ```
 
+**FlatMap**
 ```
 tr.flatMap( lambda l : l.split(" ") ).filter(lambda mot : "table" in mot).take(10)
 ```
@@ -113,6 +121,7 @@ tr.flatMap( lambda l : l.split(" ") ).filter(lambda mot : "table" in mot).saveAs
 
 ### Creer un Dataframe
 
+**Creation d'une liste de tuple**
 ```
 cepages = [
   ("Aglianico", "R", "IT"),
@@ -129,22 +138,27 @@ cepages = [
 ]
 ```
 
+**Creation d'un dataframe**
 ```
 df = spark.createDataFrame(cepages, ["Nom", "Couleur", "Pays"])
 ```
 
+**Afficher une colonne**
 ```
 df.Nom
 ```
 
+**Afficher les colonnes (variables)**
 ```
 df.columns
 ```
 
+**Afficher les 5 premieres observations**
 ```
 df.take(5)
 ```
 
+**Filtrer le df**
 ```
 df.filter(df.Couleur == 'R').show()
 ```
@@ -170,10 +184,13 @@ val co = spark.read.avro("/tmp/data/communes.avro")
 ```
 
 ### Lecture du fichier csv
+
+**Ouverture du fichier csv**
 ```
 val df = spark.read.option("header",true).csv("/tmp/data/infos.csv")
 ```
 
+**Afficher le df sous forme de tableau**
 ```
 co.show()
 ```
@@ -188,10 +205,33 @@ co.filter("Nom == GAYE").join(co2, co("ID") === co2("ID")).show()
 ```
 
 ### Ecriture et lectures de fichier parquet
-```c
+
+**Ecriture**
+```
 o.write.parquet("/tmp/data/infos.parquet")
 ```
 
+**Lecture**
 ```
 val df = spark.read.parquet("/tmp/data/infos.parquet")
+```
+
+**Voir les types de chaque variable**
+```
+df.printSchema()
+```
+
+**Faire une projection comme dans sql**
+```
+df.select(df("Nom"), df("Age")).show()
+```
+
+**...**
+```
+df.select("Nom", "Age").show()
+```
+
+**...**
+```
+./bin/spark-submit  --master local /tmp/data/fantoir.py
 ```
