@@ -18,25 +18,6 @@ tar xzf spark-3.3.0-bin-hadoop3.tgz
 sudo mv spark-3.3.0-bin-hadoop3 /opt/spark
 ```
 
-
-## LANCEMENT
-
-```
-service docker start
-```
-
-```
-service docker status
-```
-
-```
-sudo docker-compose up
-```
-
-```
-sudo docker exec -it docker-spark_master_1 /bin/bash
-```
-
 ## Utiliser scala
 
 ```
