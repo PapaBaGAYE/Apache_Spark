@@ -2,6 +2,9 @@
 
 ## INSTALLATION
 
+*Auteur :* **Papa Ba GAYE**
+**Au moment de repository, on est actuellement à la version 3.3.0**
+
 ```
 sudo apt update
 ```
