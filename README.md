@@ -19,9 +19,9 @@ sudo mv spark-3.3.0-bin-hadoop3 /opt/spark
 ```
 
 ## Utiliser scala
-
+**Lancer pyspark**
 ```
-./spark-shell
+spark-shell
 ```
 
 <p>En scala on peut utiliser : </p>
@@ -68,7 +68,7 @@ tr.flatMap( _.split(" ") ).map(_.replaceAll("[,.]", "")).filter(mot => mot.conta
 
 **Lancer pyspark**
 ```
-./pyspark
+pyspark
 ```
 
 **Lecture des fichiers .txt**
