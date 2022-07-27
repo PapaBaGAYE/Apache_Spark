@@ -1,8 +1,6 @@
 # Apache_Spark
-
-## INSTALLATION
-
 *Auteur :* **Papa Ba GAYE**
+## INSTALLATION
 
 **Au moment de repository, on est actuellement à la version 3.3.0**
 
