@@ -207,18 +207,32 @@ df.select("Nom", "Age").show()
 ```
 
 ### Convertir un Dataframe en RDD
+**Importatuion de SQLContext
+```
+import org.apache.spark.sql.SQLContext
+```
+
+**Creation du Dataframe**
+```
+val df = sqlCtx.read.format("csv").option("header", "true").option("interSchema", "true").load("/home/papealygaye/Desktop/Ventes.csv")
+```
+
+**Convertion du Dataframe en RDD**
 ```
 val dfToRdd = df.rdd
 ```
 
+**Convertion du typr Row du RDD en type String**
 ```
 val dfToRddStr = df.select("codeClient").map(value => value.toString()).rdd
 ```
 
+**Mapping**
 ```
 val rddMap = dfToRddStr.map(x => (x, 1))
 ```
 
+**reduce**
 ```
 val rddRed = rddMap.reduceByKey(_+_)
 ```
